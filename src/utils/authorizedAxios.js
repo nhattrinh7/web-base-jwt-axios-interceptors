@@ -5,10 +5,10 @@ import { handleLogoutAPI, refreshTokenAPI } from '~/apis'
 // Khởi tạo 1 đối tượng axios để custom và cấu hình chung cho dự án, dùng để gọi API ở mọi nơi trong dự án
 
 let authorizedAxiosInstance = axios.create()
-// Thời gian chờ tối đa của 1 request: để 10 phút
+// Thời gian chờ tối đa của 1 request: để 10 phút, bắt trường hợp backend trả về dữ liệu quá lâu
 authorizedAxiosInstance.defaults.timeout = 1000 * 60 * 10
 
-// withCredentials: cho phép axios tự động đính kèm + gửi cookie trong mỗi request lên BE (phục vụ trường hợp nếu chúng ta lưu
+// withCredentials: cho phép axios tự động đính kèm + gửi cookie trong mỗi request (header của request) lên BE (phục vụ trường hợp nếu chúng ta lưu
 // acess & refresh token vào Cookie theo cơ chế httpOnly Cookie)
 authorizedAxiosInstance.defaults.withCredentials = true
 

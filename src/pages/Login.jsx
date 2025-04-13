@@ -19,15 +19,15 @@ function Login() {
 
   const submitLogIn = async (data) => {
     const res = await authorizedAxiosInstance.post(`${API_ROOT}/v1/users/login`, data)
-    console.log(res)
+    console.log('res', res)
     const userInfo = {
       id: res.data.id,
       email: res.data.email
     }
 
     // Lưu token và thông tin User vào Local Storage, dùng JS thuần
-    localStorage.setItem('accessToken', res.data.accessToken) // string
-    localStorage.setItem('refreshToken', res.data.refreshToken) // string
+    // localStorage.setItem('accessToken', res.data.accessToken) // string
+    // localStorage.setItem('refreshToken', res.data.refreshToken) // string
     localStorage.setItem('userInfo', JSON.stringify(userInfo)) // ko phải string nên phải biến thành string
 
     // Điều hướng tới trang Dashboard khi login thành công
